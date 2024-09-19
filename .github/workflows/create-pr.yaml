@@ -29,7 +29,6 @@ permissions:
 jobs:
   create-pull-request:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/feature/') # Passe dies an deine Bedingungen an
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
