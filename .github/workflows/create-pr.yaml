@@ -1,4 +1,4 @@
-name: create-pr
+name: Create or Update PR
 
 on:
   push:
@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: ${{ github.repository_owner }}
           REPO_NAME: ${{ github.event.repository.name }}
-          BASE_BRANCH: main  # Zielbranch des Pull Requests
+          BASE_BRANCH: main  # target branch of the
         run: |
           BRANCH_NAME=$(echo "${GITHUB_REF}" | sed 's|refs/heads/||')
           curl -X POST \
@@ -52,4 +52,4 @@ jobs:
               --arg title "PR for $BRANCH_NAME" \
               --arg head "$BRANCH_NAME" \
               --arg base "$BASE_BRANCH" \
-              '{title: $title, head: $head, base: $base, body: "Automatisch erstellter Pull Request"}')"
+              '{title: $title, head: $head, base: $base, body: "Automatically created Pull Request to merge $head --> $base"}')"
