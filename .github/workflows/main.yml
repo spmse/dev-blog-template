@@ -11,6 +11,9 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+  pages: write # to deploy to Pages
+  id-token: write
 
 jobs:
   create-or-update-pr:

@@ -10,11 +10,6 @@ on:
   workflow_call:
   workflow_dispatch:
 
-# Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-permissions:
-  pages: write # to deploy to Pages
-  id-token: write
-
 jobs:
   build:
     name: Build Docusaurus
