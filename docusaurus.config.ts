@@ -2,6 +2,25 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+/* TODO: change to read configuration from environment */
+const blogEnabled = false
+
+const moreColumn = {
+  title: 'More',
+  items: [
+    {
+      label: 'GitHub',
+      href: 'https://github.com/facebook/docusaurus',
+    },
+  ],
+}
+if (blogEnabled) {
+  moreColumn.items.push({
+    label: 'Blog',
+    href: '/blog',
+  })
+}
+
 const config: Config = {
   title: 'DSO Live Demo Docs',
   tagline: 'Dinosaurs are cool',
@@ -17,6 +36,8 @@ const config: Config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'spmse', // Usually your GitHub org/user name.
   projectName: 'dso-dev-blog', // Usually your repo name.
+
+  deploymentBranch: 'main',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -40,21 +61,23 @@ const config: Config = {
           editUrl:
             'https://github.com/spmse/dev-blog-template',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/spmse/dev-blog-template',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: blogEnabled ? 
+          {
+            showReadingTime: true,
+            feedOptions: {
+              type: ['rss', 'atom'],
+              xslt: true,
+            },
+            // Please change this to your repo.
+            // Remove this to remove the "edit this page" links.
+            editUrl:
+              'https://github.com/spmse/dev-blog-template',
+            // Useful options to enforce blogging best practices
+            onInlineTags: 'warn',
+            onInlineAuthors: 'warn',
+            onUntruncatedBlogPosts: 'warn',
+          }
+          : false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -78,16 +101,10 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        // {
-        //   type: 'docSidebar',
-        //   sidebarId: 'guidesSidebar',
-        //   position: 'left',
-        //   label: 'Guides',
-        // },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        // {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/spmse/dev-blog-template',
-          label: 'REPO',
+          label: 'Github',
           position: 'right',
         },
       ],
@@ -100,7 +117,7 @@ const config: Config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/intro',
+              to: '/docs/guides/intro',
             },
           ],
         },
@@ -121,19 +138,20 @@ const config: Config = {
             },
           ],
         },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-          ],
-        },
+        moreColumn
+        // {
+        //   title: 'More',
+        //   items: [
+        //     {
+        //       label: 'GitHub',
+        //       href: 'https://github.com/facebook/docusaurus',
+        //     },
+        //     blogEnabled && {
+        //       label: 'Blog',
+        //       to: '/blog',
+        //     },
+        //   ],
+        // },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
