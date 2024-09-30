@@ -1,13 +1,15 @@
 name: Create or Update PR
 
 on:
-  push:
-    branches-ignore:
-      - main
-  pull_request:
-    branches:
-      - main
-
+  # push:
+  #   branches-ignore:
+  #     - main
+  # pull_request:
+  #   branches:
+  #     - main
+  workflow_call:
+  workflow_dispatch:
+    
 permissions:
   contents: write
   pull-requests: write
@@ -32,6 +34,7 @@ permissions:
 jobs:
   create-pull-request:
     runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

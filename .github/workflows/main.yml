@@ -1,0 +1,22 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-or-update-pr:
+    name: Create or update PR
+    uses: ./create-pr.yaml
+
+  build-and-deploy-to-pages:
+    name: Build website and deploy to GitHub Pages
+    uses: ./deploy.yaml
