@@ -15,8 +15,8 @@ permissions:
 jobs:
   create-or-update-pr:
     name: Create or update PR
-    uses: ./create-pr.yaml
+    uses: .github/workflows/create-pr.yaml
 
   build-and-deploy-to-pages:
     name: Build website and deploy to GitHub Pages
-    uses: ./deploy.yaml
+    uses: .github/workflows/deploy.yaml
