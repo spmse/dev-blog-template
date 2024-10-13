@@ -1,0 +1,28 @@
+image: node:20-alpine3.19
+
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script:
+  - pnpm install
+  - pnpm build
+  except:
+    - master
+
+pages:
+  stage: deploy
+  script:
+  - pnpm install
+  - pnpm build
+  - mv ./build ../public
+  artifacts:
+    paths:
+    - public
+  only:
+    - master
+  rules:
+    - when: manual
+      allow_failure: true
