@@ -36,8 +36,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
-    if:  ${{ github.event_name  != 'pull_request' }}
- # to verify the deployment originates from an appropriate source
+    if: ${{  github.event_name  != 'pull_request' }}
 
     # Deploy to the github-pages environment
     environment:

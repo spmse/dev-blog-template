@@ -37,10 +37,10 @@ jobs:
     if: ${{ github.ref != github.event.repository.default_branch }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up GitHub CLI
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
 
       - name: Create Pull Request with GitHub API
         env:
