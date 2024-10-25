@@ -2,7 +2,6 @@ import React, {ReactNode} from 'react';
 import Admonition from '@theme/Admonition';
 import GithubIcon from '/static/img/github.svg';
 
-// TODO Description
 
 type GithubLinkAdmonitionType = {
   link: string;
