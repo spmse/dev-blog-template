@@ -3,10 +3,12 @@ import Admonition from '@theme/Admonition';
 import GithubIcon from '/static/img/github.svg';
 
 
+type AdmonitionType = "info" | "tip" | "warning" | "note" | "danger";
+
 type GithubLinkAdmonitionType = {
   link: string;
   text?: string;
-  type?: string;
+  type?: AdmonitionType;
   title?: string;
   children?: ReactNode
 };
