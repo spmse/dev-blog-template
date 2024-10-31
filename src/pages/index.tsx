@@ -22,6 +22,12 @@ function HomepageHeader() {
             to="/docs/guides/intro">
             Docusaurus Tutorial - 5min ⏱️
           </Link>
+          <></>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/projects/overview">
+            To my Projects
+          </Link>
         </div>
       </div>
     </header>
