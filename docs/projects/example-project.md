@@ -7,13 +7,18 @@ A simple and brief description and intro to the project.
 
 <!--INSERT YOUR TABLE OF CONTENTS HERE -->
 
-<!-- 
 import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
 
-<GithubLinkAdmonition title="Github Tip" type="tip" link="https://www.example.com"/> 
--->
+<GithubLinkAdmonition 
+    link="https://github.com/spmse/dev-blog-template"
+    title="Github Tip" 
+    type="tip"
+/>
 
 ## Quickstart
+
+1. do X
+2. do Y
 
 ## Description
 

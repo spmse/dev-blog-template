@@ -1,4 +1,6 @@
-# docs/intro
+---
+title: "Knowledge Base"
+---
 
 Learn the most important Knowledge Base concepts from the sections below.
 
