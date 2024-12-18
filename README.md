@@ -78,13 +78,13 @@ New content can be added as follows:
 
 ### Deploy to Github Pages
 
-Using SSH:
+To deploy using SSH:
 
 ```
 $ USE_SSH=true pnpm deploy
 ```
 
-Not using SSH:
+To deploy without using SSH, run:
 
 ```
 $ GIT_USER=<Your GitHub username> pnpm deploy
@@ -94,17 +94,35 @@ If you are using GitHub pages for hosting, this command is a convenient way to b
 
 ### Deploying using NGINX
 
+To deploy the site using Docker and NGINX, use the following Dockerfile configuration:
+
 ```dockerfile
-# Base image: Nginx built on Alpine Linux for a lightweight and efficient environment
+# Build the Docusaurus site
+FROM node:18 AS build
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the package files and install dependencies
+COPY package.json package-lock.json ./
+RUN npm install
+
+# Copy the rest of the application files
+COPY . .
+
+# Build the Docusaurus site
+RUN npm run build
+
+# Set up Nginx to serve the built site
 FROM nginx:alpine
 
-# Copy the build files (static assets) into Nginx's default directory
-COPY build/ /usr/share/nginx/html
+# Copy the build output from the previous step into the Nginx container
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose port 80 to make the application accessible via HTTP
+# Expose port 80 for Nginx
 EXPOSE 80
 
-# Start the Nginx web server in the foreground to keep the container running
+# Nginx will automatically run in the foreground
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
@@ -114,3 +132,5 @@ Build and run the container:
 $ docker build -t docusaurus-blog .
 $ docker run -d -p 80:80 docusaurus-blog
 ```
+
+Once the container is running, the blog website will be accessible at `http://localhost` in your browser.
