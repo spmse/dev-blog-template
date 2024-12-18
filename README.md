@@ -19,11 +19,9 @@ This repository hosts a developer blog built with Docusaurus. It includes tools 
 
 ### Prerequisites
 
-Ensure you have the following tools installed:
-
 - [Node.js](https://nodejs.org/) (v16 or later recommended)
 - [pnpm](https://pnpm.io/) (package manager for faster and more efficient dependency handling)
-- [Docker](https://www.docker.com/products/docker-desktop) (only required if [Deploying using NGINX](#deploying-using-nginx))
+- [Docker](https://www.docker.com/products/docker-desktop) (only required if [deploying using NGINX](#deploying-using-nginx))
 
 1. Installation
 
@@ -61,8 +59,8 @@ For detailed information about deploying this Docusaurus project, refer to the [
 
 The repository is organized as follows:
 
-- `docs/`: Contains markdown files for documentation. These files are referenced in `sidebars.ts` to define the sidebar structure.
 - `blog/`: Contains markdown files for blog posts. Blog-related metadata is automatically picked up by the Docusaurus configuration.
+- `docs/`: Contains markdown files for documentation. These files are referenced in `sidebars.ts` to define the sidebar structure.
 - `src/`: Contains custom React components, CSS, and JavaScript for additional functionality or theming.
 - `static/`: Stores static assets (e.g., images, icons) served directly without processing.
 - `sidebars.ts`: Configures the structure of sidebars in the documentation section.
@@ -94,21 +92,24 @@ If you are using GitHub pages for hosting, this command is a convenient way to b
 
 ### Deploying using NGINX
 
-To deploy the site using Docker and NGINX, use the following Dockerfile configuration:
+To deploy the site using NGINX and Docker, use the following example Dockerfile configuration:
 
 ```dockerfile
-# Build the Docusaurus site
+# Use Node:18 image as base
 FROM node:18 AS build
 
 # Set the working directory
 WORKDIR /app
 
 # Copy the package files and install dependencies
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN npm install
 
 # Copy the rest of the application files
 COPY . .
+
+# Copy the example.env to .env
+COPY example.env .env
 
 # Build the Docusaurus site
 RUN npm run build
@@ -130,7 +131,7 @@ Build and run the container:
 
 ```bash
 $ docker build -t docusaurus-blog .
-$ docker run -d -p 80:80 docusaurus-blog
+$ docker run -d -p 3000:80 docusaurus-blog
 ```
 
-Once the container is running, the blog website will be accessible at `http://localhost` in your browser.
+Once the container is running, the blog website will be accessible at `http://localhost:3000` or `http://<YOUR_VM_IP>:3000` in your browser.
