@@ -23,6 +23,7 @@ Ensure you have the following tools installed:
 
 - [Node.js](https://nodejs.org/) (v16 or later recommended)
 - [pnpm](https://pnpm.io/) (package manager for faster and more efficient dependency handling)
+- [Docker](https://www.docker.com/products/docker-desktop) (only required if [Deploying using NGINX](#deploying-using-nginx))
 
 1. Installation
 
@@ -105,7 +106,6 @@ EXPOSE 80
 
 # Start the Nginx web server in the foreground to keep the container running
 CMD ["nginx", "-g", "daemon off;"]
-
 ```
 
 Build and run the container:
