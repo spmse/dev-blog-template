@@ -1,0 +1,37 @@
+name: Build Blog
+
+on:
+  workflow_call: # Allows other workflows to call this one
+    inputs:
+      output-path:
+        type: string # Specify the type of the input
+        description: "The output path for the build artifacts"
+        required: true
+        default: "build"
+
+jobs:
+  build:
+    name: Build Blog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install --frozen-lockfile
+
+      - name: Create .env config file
+        run: cp example.env .env
+
+      - name: Build website
+        run: npm run build && mv build ${{ inputs.output-path }}
+
+      - name: Save Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: blog-build
+          path: ${{ inputs.output-path }}
