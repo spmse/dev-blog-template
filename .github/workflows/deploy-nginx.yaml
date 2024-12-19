@@ -1,0 +1,29 @@
+name: Deploy to NGINX
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-blog.yaml
+    with:
+      output-path: build
+
+  deploy:
+    name: Deploy to NGINX
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: blog-build
+          path: ./build
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t blog:latest .
+          docker tag blog:latest ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
