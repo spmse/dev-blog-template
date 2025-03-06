@@ -1,39 +1,15 @@
 name: Create or Update PR
 
 on:
-  # push:
-  #   branches-ignore:
-  #     - main
-  # pull_request:
-  #   branches:
-  #     - main
   workflow_call:
   workflow_dispatch:
-    
 permissions:
   contents: write
   pull-requests: write
-
-# jobs:
-#   create-pr:
-#     name: create-pr
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Check out repository code
-#         uses: actions/checkout@v4
-
-#       # Make changes to pull request here,
-#       # see https://github.com/marketplace/actions/create-pull-request
-#       - name: Create Pull Request
-#         uses: peter-evans/create-pull-request@v7
-#         # with:
-#         #   title: "IT worked"
-#         #   branch: "${{ github.ref_name }}-auto"
-#         #   # base: "{{ github.ref_name }}"
-
 jobs:
   create-pull-request:
     runs-on: ubuntu-latest
+    if: ${{ github.ref != github.event.repository.default_branch }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

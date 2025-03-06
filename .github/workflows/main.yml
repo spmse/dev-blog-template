@@ -1,5 +1,4 @@
 name: CI/CD Workflow
-
 on:
   push:
     branches:
@@ -19,7 +18,6 @@ jobs:
   create-or-update-pr:
     name: Create or update PR
     uses: ./.github/workflows/create-pr.yaml
-    if: ${{ github.ref != github.event.repository.default_branch }}
 
   build-and-deploy-to-pages:
     name: Build website and deploy to GitHub Pages

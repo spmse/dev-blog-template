@@ -1,7 +1,7 @@
-# Project-Title
+# V-Server Setup
 
 <!--INSERT YOUR BRIEF DESCRIPTION HERE -->
-A simple and brief description and intro to the project.
+This page documents how I configured my very first cloud server instance in the Developer Akademie DevSecOps Course.
 
 ## TOC
 
@@ -13,9 +13,7 @@ import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
     link="https://github.com/spmse/dev-blog-template"
     title="Github Tip" 
     type="tip"
->
-Checkout this repository to see the code/implementation
-</GithubLinkAdmonition>
+/>
 
 ## Quickstart
 
@@ -23,5 +21,7 @@ Checkout this repository to see the code/implementation
 2. do Y
 
 ## Description
+
+this is an *example* of a **description**.
 
 ## Further References
