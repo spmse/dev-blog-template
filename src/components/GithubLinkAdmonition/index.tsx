@@ -20,6 +20,7 @@ const GithubLinkAdmonition = ({
   title="Github",
   children
  }: GithubLinkAdmonitionType) => {
+  
   return (
     <Admonition icon={<GithubIcon />} title={title} type={type}>
       <p>

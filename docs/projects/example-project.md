@@ -8,6 +8,7 @@ A simple and brief description and intro to the project.
 <!--INSERT YOUR TABLE OF CONTENTS HERE -->
 
 import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import CustomTabList from '@site/src/components/CustomTabList';
 
 <GithubLinkAdmonition 
     link="https://github.com/spmse/dev-blog-template"
@@ -15,7 +16,23 @@ import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
     type="tip"
 >
 Checkout this repository to see the code/implementation
+
+<CustomTabList
+    customTabGroup="demo1"
+    tabs={[
+        {label: "test", value: "test", children: <h1>mit überschrift, ganz sicher!</h1> }
+    ]}
+/>
+
+
 </GithubLinkAdmonition>
+
+<CustomTabList
+    customTabGroup="demo1"
+    tabs={[
+        {label: "test", value: "test", children: <h1>mit überschrift, ganz sicher!</h1> }
+    ]}
+/>
 
 ## Quickstart
 
