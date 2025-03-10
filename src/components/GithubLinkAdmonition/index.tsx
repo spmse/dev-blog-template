@@ -38,9 +38,7 @@ const GithubLinkAdmonition = ({
       </p>
 
       {children && (
-        <span>
-          {children}
-        </span>
+        children
       )}
     </Admonition>
   );

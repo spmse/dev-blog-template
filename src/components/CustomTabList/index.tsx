@@ -26,10 +26,6 @@ const CustomTabList = ({ tabs, customTabGroup }: ICustomTabListProps) => {
     return (
         <Tabs groupId={customTabGroup}>
             {tabElements}
-            <TabItem value="banana" label="Banana">
-                This is a banana 🍌
-            </TabItem>
-
         </Tabs>
     )
 }
