@@ -30,4 +30,4 @@ Outline possible next steps or further reading material in the bottom section of
   - [create a markdown web page](./docusaurus-basics/create-a-page.md#create-your-first-markdown-page) in docusaurus
   - [create a document](./docusaurus-basics/create-a-document.md) in docusaurus
   - [create a blog entry](./docusaurus-basics/create-a-blog-post.md) in docusaurus
-  - [CLI command parts](./the-parts-of-cli-commands.md)
+  - [CLI command parts](./linux/the-parts-of-cli-commands.md)
