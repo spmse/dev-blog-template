@@ -8,32 +8,16 @@ dotenvconfig();
 /* TODO: change to read configuration from environment */
 const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
 
-const moreColumn = {
-  title: 'More',
-  items: [
-    {
-      label: 'GitHub',
-      href: 'https://github.com/spmse',
-    },
-  ],
-}
-if (blogEnabled) {
-  moreColumn.items.push({
-    label: 'Blog',
-    href: '/blog',
-  })
-}
-
 const config: Config = {
   title: 'DSO Live Demo Docs',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: process.env.DEPLOYMENT_URL,
+  url: process.env.DEPLOYMENT_URL ?? "https://spmse.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.BASE_URL,
+  baseUrl: process.env.BASE_URL ?? "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -104,7 +88,6 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        // {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/spmse/dev-blog-template',
           label: 'Github',
@@ -141,22 +124,21 @@ const config: Config = {
             },
           ],
         },
-        moreColumn
-        // {
-        //   title: 'More',
-        //   items: [
-        //     {
-        //       label: 'GitHub',
-        //       href: 'https://github.com/facebook/docusaurus',
-        //     },
-        //     blogEnabled && {
-        //       label: 'Blog',
-        //       to: '/blog',
-        //     },
-        //   ],
-        // },
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/facebook/docusaurus',
+            },
+            ...blogEnabled && [{
+              label: 'Blog',
+              to: '/blog',
+            }],
+          ],
+        },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Sven Patrick Meier (spmse). Built with Docusaurus and 💚.`,
     },
     prism: {
       theme: prismThemes.github,

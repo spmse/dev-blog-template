@@ -1,12 +1,6 @@
 name: Deploy to GitHub Pages
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  # pull_request:
-  #   branches:
-  #     - main
   workflow_call:
   workflow_dispatch:
 
@@ -52,4 +46,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
