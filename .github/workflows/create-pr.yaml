@@ -1,11 +1,15 @@
 name: Create or Update PR
 
 on:
-  workflow_call:
-  workflow_dispatch:
+  push:
+    branches-ignore:
+      - main
+      - master
+
 permissions:
   contents: write
   pull-requests: write
+
 jobs:
   create-pull-request:
     runs-on: ubuntu-latest
@@ -14,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up GitHub CLI
+      - name: Set up NodeJS environment
         uses: actions/setup-node@v4
 
       - name: Create Pull Request with GitHub API
