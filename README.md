@@ -6,6 +6,9 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 This repository hosts a developer blog built with Docusaurus. It includes tools and scripts for creating, managing, and deploying static web content. The software supports rapid local development, customizable theming, and seamless deployment to platforms like GitHub Pages or NGINX.
 
+> [!NOTE]
+> Other changes will not happen, as this PR is there for demos
+
 ## Table of Contents
 
 - [My Developer Blog](#my-developer-blog)
